@@ -20,8 +20,19 @@ function Workouts(){
             title : "Workout",
             description : "Dummy workout",
             duration: 2
-        }).then((response) => {
-          setWorkoutList(response.data)
+        },
+        {
+          headers :{
+            accessToken: sessionStorage.getItem("accessToken"),
+          },
+        }
+        ).then((response) => {
+          if(response.data.error) {
+            alert(response.data.error)
+          }
+          else{
+            setWorkoutList(response.data);
+          } 
         });
     }
     function deleteWorkout(id) {
