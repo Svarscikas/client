@@ -10,16 +10,21 @@ function Workouts(){
     let navigate = useNavigate();
     useEffect(()=> {
         
-        axios.get("http://localhost:3001/workouts/").then( (response) =>{
+        axios.get("http://localhost:3001/workouts/",{
+          headers: {
+            accessToken: sessionStorage.getItem("accessToken"),
+          }
+        }).then( (response) =>{
           setWorkoutList(response.data);
-        });
+        }
+        );
       },[])
 
     const onSubmit = () =>{
         axios.post("http://localhost:3001/workouts/",{
             title : "Workout",
             description : "Dummy workout",
-            duration: 2
+            duration: 2,
         },
         {
           headers :{
@@ -36,7 +41,9 @@ function Workouts(){
         });
     }
     function deleteWorkout(id) {
-      axios.delete('http://localhost:3001/workouts/' + id).then((response) =>{
+      axios.delete('http://localhost:3001/workouts/' + id,{
+        headers :{accessToken: sessionStorage.getItem("accessToken"),},
+      }).then((response) =>{
         console.log(response.data);
         setWorkoutList(response.data)
       });
@@ -49,7 +56,7 @@ function Workouts(){
         {workoutList.map((value, key) =>{
         return(
           <div className="Card">
-            <div className="Exercise"onClick={() => navigate(`/workouts/byId/${value.id}`)}>{value.createdAt}</div>
+            <div className="Exercise"onClick={() => navigate(`/workouts/byId/${value.id}`)}>{value.createdAt}{' '}{value.username}</div>
             <div>
               Exercises
             </div>

@@ -32,6 +32,7 @@ function App() {
         <Route path="/register" element={<Register />}></Route>
         <Route path="/login" element={<Login />}></Route>
         <Route path="/workouts/byId/:id" element={<Workout/>}></Route>
+        <Route path="/" element={<Home/>}></Route>
       </Routes>
     </Router>
     <footer className="footer">
