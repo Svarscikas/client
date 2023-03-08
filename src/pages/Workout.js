@@ -4,8 +4,10 @@ import { useParams } from 'react-router-dom';
 import React from 'react';
 import { Field, Form, Formik, FormikProps } from 'formik';
 //import { ValidationError } from 'sequelize';
+import { useNavigate } from 'react-router-dom';
 
 function Workout() {
+    let navigate = useNavigate();
     //console.log(List);
     //Lets to use object data in the page
     let { id } = useParams();
@@ -14,7 +16,7 @@ function Workout() {
     const [showAddExcercise, setShowAddExcercise] = useState(false);
     const [workoutExercise, setWorkoutExercise] = useState([]);
     const [buttonText, setButtonText] = useState("Add new excercise");
-    
+    const [completeButton, setCompleteButton] = useState();
 
     const handleExcercisesButton = () => {
       setShowAddExcercise(!showAddExcercise);
@@ -24,7 +26,16 @@ function Workout() {
         setButtonText("Cancel")
       }
     }
-
+    const completeWorkout = () => {
+      if(!workoutExercise.length){
+        alert("You must have atleast one exercise done to complete it.");
+        return;
+      }
+      axios.put('http://localhost:3001/workouts/byId/' + id).then ((response) => {
+         alert(response.data);
+         navigate('/workouts');
+      })
+    }
 
     useEffect(() => {
       axios.get('http://localhost:3001/workouts/byId/' + id).then( (response) =>{
@@ -41,8 +52,13 @@ function Workout() {
 
     return( <div className="Card">             
                 <h2>{workoutObject.title} {workoutObject.createdAt}</h2>
-                <div>{ShowWorkoutExercises(workoutExercise, setWorkoutExercise)}</div>
-                <button id="Btn" className='addExerciseButton' onClick={handleExcercisesButton}>{buttonText}</button>
+                <div>{ShowWorkoutExercises(workoutExercise, setWorkoutExercise,workoutObject)}</div>
+                {workoutObject.status == false &&
+                  <button id="Btn" className='addExerciseButton' onClick={handleExcercisesButton}>{buttonText}</button>
+                }
+                {workoutObject.status == false && 
+                  <button id ="Btn" className='addExerciseButton' onClick={completeWorkout}>Complete workout</button>
+                }
                 <div>{AddExerciseForm(exerciseObject, showAddExcercise, id, setWorkoutExercise, workoutExercise)}</div>
             </div>);
   
@@ -57,13 +73,14 @@ function deleteRow(id, workoutId, setWorkoutExercise){
     //setWorkoutExercise(response.data)
   })
 }
-const ShowWorkoutExercises = (workoutExercise,setWorkoutExercise) => {
+const ShowWorkoutExercises = (workoutExercise,setWorkoutExercise,workoutObject) => {
   if(!workoutExercise.length)
   return(
     <div> You have no exercises in this workout. </div>
   )
   else {
-    console.log(workoutExercise);
+    //console.log(workoutExercise);
+    //console.log(workoutObject);
     return (
       <div>
         <table className='exerciseTable'>
@@ -80,7 +97,10 @@ const ShowWorkoutExercises = (workoutExercise,setWorkoutExercise) => {
               <td>{value.repetitions}</td>
               <button className="deleteBtn">
                 <img src="/delete.png"
-                 onClick={() => deleteRow(value.id, value.workoutId, setWorkoutExercise)}>
+                 onClick={() => {
+                  {workoutObject.status == true && alert("Cannot delete an exercise when workout is completed")}
+                  {workoutObject.status== false && deleteRow(value.id, value.workoutId, setWorkoutExercise)}
+                 }}>
                 </img>
               </button>
             </tr>
@@ -112,9 +132,6 @@ const AddExerciseForm = (exerciseObject, showAddExcercise, workoutiD, setWorkout
     <Formik initialValues={{ exercise: "1", weight : 0, repetitions : 0, workoutId : workoutiD }}
     onSubmit={(data) => {
       data.exercise = selectedValue;
-      //console.log(data);
-      //setWorkoutExercise(await )
-      //getData();
        axios.post("http://localhost:3001/workouts/byId/:id", data).then((response)=>{
           setWorkoutExercise(response.data);
       })  

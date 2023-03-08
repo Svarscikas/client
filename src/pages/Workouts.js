@@ -24,7 +24,7 @@ function Workouts(){
         axios.post("http://localhost:3001/workouts/",{
             title : "Workout",
             description : "Dummy workout",
-            duration: 2,
+            status: false,
         },
         {
           headers :{
@@ -58,9 +58,9 @@ function Workouts(){
           <div className="Card">
             <div className="Exercise"onClick={() => navigate(`/workouts/byId/${value.id}`)}>{value.createdAt}{' '}{value.username}</div>
             <div>
-              Exercises
+              Status:{' '}{value.status == 0 && <p className='inProgress'>In progress</p>}{value.status == 1 && <p className='completed'>Completed</p>}
             </div>
-            <button onClick={() => deleteWorkout(value.id)}>Delete</button>
+            <button className='addExerciseButton' onClick={() => deleteWorkout(value.id)}>Delete</button>
           </div>
         );
       })}</div>

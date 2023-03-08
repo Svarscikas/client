@@ -3,8 +3,10 @@ import React from 'react'
 import { Link } from 'react-router-dom';
 import { Formik, Form, Field, ErrorMessage, yupToFormErrors} from 'formik';
 import * as Yup from 'yup';
+import { useNavigate } from 'react-router-dom';
 
 function Register() {
+  const navigate = useNavigate();
   const initialValues = {
     username : "",
     password : "",
@@ -21,6 +23,7 @@ function Register() {
       }
       else{
         alert("You have registered succesfully.");
+        navigate('/login');
       }
     });
   }
