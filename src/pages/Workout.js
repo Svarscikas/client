@@ -51,7 +51,7 @@ function Workout() {
     
 
     return( <div className="Card">             
-                <h2>{workoutObject.title} {workoutObject.createdAt}</h2>
+                <h2>{workoutObject.title} {workoutObject.createdAt?.slice(0,10)}</h2>
                 <div>{ShowWorkoutExercises(workoutExercise, setWorkoutExercise,workoutObject)}</div>
                 {workoutObject.status == false &&
                   <button id="Btn" className='addExerciseButton' onClick={handleExcercisesButton}>{buttonText}</button>

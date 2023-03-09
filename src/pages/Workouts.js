@@ -15,7 +15,14 @@ function Workouts(){
             accessToken: sessionStorage.getItem("accessToken"),
           }
         }).then( (response) =>{
-          setWorkoutList(response.data);
+          if(response.data.error) {
+            navigate("/login");
+            alert(response.data.error)
+          }
+          else{
+            setWorkoutList(response.data);
+            console.log(response.data);
+          } 
         }
         );
       },[])
@@ -36,7 +43,9 @@ function Workouts(){
             alert(response.data.error)
           }
           else{
-            setWorkoutList(response.data);
+            //setWorkoutList(response.data);
+            const id = response.data[0].id
+            navigate("/workouts/byId/" + id);
           } 
         });
     }
@@ -44,8 +53,8 @@ function Workouts(){
       axios.delete('http://localhost:3001/workouts/' + id,{
         headers :{accessToken: sessionStorage.getItem("accessToken"),},
       }).then((response) =>{
-        console.log(response.data);
-        setWorkoutList(response.data)
+        alert("Workout deleted");
+        navigate(0);
       });
     }
   return (
@@ -56,10 +65,11 @@ function Workouts(){
         {workoutList.map((value, key) =>{
         return(
           <div className="Card">
-            <div className="Exercise"onClick={() => navigate(`/workouts/byId/${value.id}`)}>{value.createdAt}{' '}{value.username}</div>
+            <div className="Exercise"onClick={() => navigate(`/workouts/byId/${value.id}`)}>{value.createdAt.slice(0.,10)}{' '}{value.username}</div>
             <div>
               Status:{' '}{value.status == 0 && <p className='inProgress'>In progress</p>}{value.status == 1 && <p className='completed'>Completed</p>}
             </div>
+            <div>Exercise count: {value.exerciseCount}</div>
             <button className='addExerciseButton' onClick={() => deleteWorkout(value.id)}>Delete</button>
           </div>
         );
