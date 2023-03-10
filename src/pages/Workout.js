@@ -68,9 +68,18 @@ function Workout() {
 
 
 function deleteRow(id, workoutId, setWorkoutExercise){
-  axios.delete("http://localhost:3001/workouts/byId/"+ id + "/" + workoutId).then((response) =>{
-    setWorkoutExercise(response.data);
-    //setWorkoutExercise(response.data)
+  axios.delete("http://localhost:3001/workouts/byId/"+ id + "/" + workoutId,
+  {
+    headers: {
+      accessToken: sessionStorage.getItem("accessToken"),
+    } 
+   }).then((response) =>{
+    if(response.data.errors) {
+      alert(response.data.errors);
+    }
+    else{
+      setWorkoutExercise(response.data);
+    }
   })
 }
 const ShowWorkoutExercises = (workoutExercise,setWorkoutExercise,workoutObject) => {
