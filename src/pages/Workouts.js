@@ -67,7 +67,7 @@ function Workouts(){
           <div className="Card">
             <div className="Exercise"onClick={() => navigate(`/workouts/byId/${value.id}`)}>{value.createdAt.slice(0.,10)}{' '}{value.username}</div>
             <div>
-              Status:{' '}{value.status == 0 && <p className='inProgress'>In progress</p>}{value.status == 1 && <p className='completed'>Completed</p>}
+              {value.status == 0 && <p className='inProgress'>In progress</p>}{value.status == 1 && <p className='completed'>Completed</p>}
             </div>
             <div>Exercise count: {value.exerciseCount}</div>
             <button className='addExerciseButton' onClick={() => deleteWorkout(value.id)}>Delete</button>

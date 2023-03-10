@@ -12,21 +12,6 @@ function Exercises() {
           setExerciseList(response.data);
         });
       },[])
-function showExerciseInfo() {
-  return (
-    <Collapsible trigger="Start here">
-      <p>
-        This is the collapsible content. It can be any element or React
-        component you like.
-      </p>
-      <p>
-        It can even be another Collapsible component. Check out the next
-        section!
-      </p>
-    </Collapsible>
-  )
-}
-//onClick={() => navigate(`/exercises/byId/${value.id}`)}
   return (
     <div>
       {exerciseList.map((value, key) =>{
@@ -34,7 +19,7 @@ function showExerciseInfo() {
           <div>
             <div className='Exercise1' onClick={() => navigate(`/exercises/byId/${value.id}`)}>
               {value.title}
-              <p>Personal best: {value.personalBest}</p>
+              {value.personalBest > 0 && <p class="text">Personal best: {value.personalBest} Kg</p>}
             </div>
             
           </div>
