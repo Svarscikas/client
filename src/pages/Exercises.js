@@ -32,8 +32,11 @@ function showExerciseInfo() {
       {exerciseList.map((value, key) =>{
         return(
           <div>
-            <div className='Exercise1' onClick={() => navigate(`/exercises/byId/${value.id}`)}>{value.title}
+            <div className='Exercise1' onClick={() => navigate(`/exercises/byId/${value.id}`)}>
+              {value.title}
+              <p>Personal best: {value.personalBest}</p>
             </div>
+            
           </div>
         );
       })}

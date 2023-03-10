@@ -132,9 +132,19 @@ const AddExerciseForm = (exerciseObject, showAddExcercise, workoutiD, setWorkout
     <Formik initialValues={{ exercise: "1", weight : 0, repetitions : 0, workoutId : workoutiD }}
     onSubmit={(data) => {
       data.exercise = selectedValue;
-       axios.post("http://localhost:3001/workouts/byId/:id", data).then((response)=>{
-          setWorkoutExercise(response.data);
-      })  
+       axios.post("http://localhost:3001/workouts/byId/:id", data,{
+        headers: {
+          accessToken: sessionStorage.getItem("accessToken"),
+        } 
+       }).then((response)=>{
+          if(response.data.error){
+            alert(response.data.error);
+          }
+          else{
+            setWorkoutExercise(response.data);
+          }
+          
+      },)  
     }}
     >
         {({ isSubmitting }) => (
