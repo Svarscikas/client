@@ -71,7 +71,7 @@ function deleteRow(id, workoutId, setWorkoutExercise){
   axios.delete("http://localhost:3001/workouts/byId/"+ id + "/" + workoutId,
   {
     headers: {
-      accessToken: sessionStorage.getItem("accessToken"),
+      accessToken: localStorage.getItem("accessToken"),
     } 
    }).then((response) =>{
     if(response.data.errors) {
@@ -143,7 +143,7 @@ const AddExerciseForm = (exerciseObject, showAddExcercise, workoutiD, setWorkout
       data.exercise = selectedValue;
        axios.post("http://localhost:3001/workouts/byId/:id", data,{
         headers: {
-          accessToken: sessionStorage.getItem("accessToken"),
+          accessToken: localStorage.getItem("accessToken"),
         } 
        }).then((response)=>{
           if(response.data.error){

@@ -12,7 +12,7 @@ function Workouts(){
         
         axios.get("http://localhost:3001/workouts/",{
           headers: {
-            accessToken: sessionStorage.getItem("accessToken"),
+            accessToken: localStorage.getItem("accessToken"),
           }
         }).then( (response) =>{
           if(response.data.error) {
@@ -35,7 +35,7 @@ function Workouts(){
         },
         {
           headers :{
-            accessToken: sessionStorage.getItem("accessToken"),
+            accessToken: localStorage.getItem("accessToken"),
           },
         }
         ).then((response) => {
@@ -51,7 +51,7 @@ function Workouts(){
     }
     function deleteWorkout(id) {
       axios.delete('http://localhost:3001/workouts/' + id,{
-        headers :{accessToken: sessionStorage.getItem("accessToken"),},
+        headers :{accessToken: localStorage.getItem("accessToken"),},
       }).then((response) =>{
         alert("Workout deleted");
         navigate(0);
