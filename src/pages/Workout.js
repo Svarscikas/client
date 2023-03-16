@@ -2,10 +2,10 @@ import axios from 'axios';
 import {useEffect, useState} from 'react';
 import { useParams } from 'react-router-dom';
 import React from 'react';
-import { Field, Form, Formik, FormikProps } from 'formik';
+import { Field, Form, Formik, FormikProps, ErrorMessage } from 'formik';
 //import { ValidationError } from 'sequelize';
 import { useNavigate } from 'react-router-dom';
-
+import * as Yup from 'yup';
 function Workout() {
     let navigate = useNavigate();
     //console.log(List);
@@ -126,7 +126,7 @@ const ShowWorkoutExercises = (workoutExercise,setWorkoutExercise,workoutObject) 
 const AddExerciseForm = (exerciseObject, showAddExcercise, workoutiD, setWorkoutExercise, workoutExercise) => {
   const [selectedValue, setSelected] = useState(1);
   
-
+  
   const handleChange = (event) => {
       setSelected(event.target.value);
       //console.log("event.target.value");
@@ -137,9 +137,30 @@ const AddExerciseForm = (exerciseObject, showAddExcercise, workoutiD, setWorkout
       <div>{workoutiD}</div>
     )
   } else {
+  const validationSchema = Yup.object().shape({
+      weight: Yup.
+      string().
+      required("You must enter the weight").
+      max(5,"The weight is too big to lift").
+      test('Is positive','The weight must be a number greater or equal to 0',(value)=> value >= 0),
+
+      repetitions: Yup.
+      string().
+      required("You must do atleast one rep to add an exercise").
+      max(5, "Too many repetitions. I doubt you've done so much").
+      test('Is positive','The repetitions must be a number greater than 0',(value)=> value > 0),
+  })
+  let initialValues = {
+    exercise : 1,
+    weight : "",
+    repetitions : "",
+    workoutId : workoutiD,
+  }
   return (
-    <Formik initialValues={{ exercise: "1", weight : 0, repetitions : 0, workoutId : workoutiD }}
+    
+    <Formik initialValues={initialValues} validationSchema={validationSchema}
     onSubmit={(data) => {
+
       data.exercise = selectedValue;
        axios.post("http://localhost:3001/workouts/byId/:id", data,{
         headers: {
@@ -174,10 +195,13 @@ const AddExerciseForm = (exerciseObject, showAddExcercise, workoutiD, setWorkout
                   </div>
                   <div className='exerciseFormLabels'>
                   <Field name="repetitions" placeholder="Repetitions..." className="inputField"/>
-                  
                   </div>
                   <button type='submit' className="addExerciseButton2">+</button>
+                  
               </div>
+              <ErrorMessage name = "weight" component = "span" className="errorMsg"></ErrorMessage>
+              <br></br>
+              <ErrorMessage name = "repetitions" component = "span" className="errorMsg"></ErrorMessage>
             </Form>
         )}
     </Formik>
