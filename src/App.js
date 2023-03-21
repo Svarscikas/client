@@ -8,9 +8,12 @@ import Exercises from "./pages/Exercises";
 import Workout from "./pages/Workout";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
+import Profile from "./pages/Profile";
 import {AuthContext} from "./helpers/AuthContext";
 import axios from "axios";
 import { Navigate } from "react-router-dom";
+import { Alert } from "./Alert"
+import { variants } from "./variants";
 import "./App.css";
 
 function App() {
@@ -53,6 +56,7 @@ function App() {
           <Route path="/login" element={<Login />}></Route>
           <Route path="/workouts/byId/:id" element={<Workout/>}></Route>
           <Route path="/" element={<Home/>}></Route>
+          <Route path="/profile" element ={<Profile/>}></Route>
         </Routes>
       </Router>
     </AuthContext.Provider>

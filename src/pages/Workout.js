@@ -172,8 +172,7 @@ const AddExerciseForm = (exerciseObject, showAddExcercise, workoutiD, setWorkout
           }
           else{
             setWorkoutExercise(response.data);
-          }
-          
+          } 
       },)  
     }}
     >

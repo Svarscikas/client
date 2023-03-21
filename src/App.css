@@ -1,6 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Mukta:wght@200;300;400;500;600;700;800&display=swap');
 body {
   font-family: 'Mukta', sans-serif;
+  justify-content: center;
+}
+*{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 .App {
   text-align: center;
@@ -30,7 +36,6 @@ body {
 .navigation-item:hover{
   background-color: rgb(212, 207, 207);
 }
-
 .navigation-item{
   min-width: 160px;
   display: inline-block;
@@ -299,6 +304,12 @@ body {
 .App-link {
   color: #61dafb;
 }
+
+.alert-container{
+  margin: 15px;
+  display: flex;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

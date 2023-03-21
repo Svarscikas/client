@@ -16,16 +16,16 @@ function AddExercise() {
         //maxWeight: 0
     };
     const validationSchema = Yup.object().shape({
-        title: Yup.string().required(),
-        description: Yup.string().required(),
-
-        //weight: Yup.number().positive(),
-        //maxWeight:Yup.number().positive(),
+        title: Yup.
+        string().
+        required("Please enter the name of the exercise"),
+        description: Yup.
+        string().
+        required("Please enter the description for the exercise"),
     });
     const onSubmit = (data) => {
-        //axios.get("http://localhost:3001/exercises/")
+
         axios.post("http://localhost:3001/exercises/", data).then( (response) =>{
-            //console.log(response);
             if(response.data != "Duplicate") {
                 alert("Exercise added.")            
                 navigate('/exercises');
