@@ -12,7 +12,7 @@ function Exercises() {
         });
       },[])
   return (
-    <div>
+    <main>
       {exerciseList.map((value, key) =>{
         return(
           <div>
@@ -24,7 +24,7 @@ function Exercises() {
           </div>
         );
       })}
-    </div>
+    </main>
     
   )
 }

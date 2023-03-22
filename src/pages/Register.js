@@ -1,12 +1,18 @@
 import axios from 'axios'
-import React from 'react'
+import React, {useContext} from 'react'
 import { Link } from 'react-router-dom';
 import { Formik, Form, Field, ErrorMessage, yupToFormErrors} from 'formik';
 import * as Yup from 'yup';
 import { useNavigate } from 'react-router-dom';
+import { AuthContext } from '../helpers/AuthContext'
+import Alert from '@mui/material/Alert';
 
 function Register() {
   const navigate = useNavigate();
+  const {authState, setAuthState} = useContext(AuthContext);
+  if(authState == true) {
+    navigate('/profile');
+  }
   const initialValues = {
     username : "",
     password : "",
@@ -19,10 +25,12 @@ function Register() {
     axios.post('http://localhost:3001/users/register', data).then((response)=>{
       console.log(response.data);
       if(response.data == "0"){
+        
         alert("The username you tried to register with already exists.");
       }
       else{
         alert("You have registered succesfully.");
+        
         navigate('/login');
       }
     });
@@ -48,9 +56,9 @@ function Register() {
         <button id ="btn"type='submit'>Register</button>
         Already have an account?&nbsp; 
       <Link to ="/login">Login here</Link>
+      
       </Form>
     </Formik>
-    
   )
 }
 export default Register

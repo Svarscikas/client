@@ -32,7 +32,7 @@ function Profile() {
         navigate("/login");
     }
     return (
-        <div>
+        <main>
             <div>
                 {profile.map((value,key) =>{
                     return(
@@ -46,7 +46,7 @@ function Profile() {
             <button onClick={logout}>
                 Logout
             </button>
-        </div>
+        </main>
            
     )
     

@@ -4,9 +4,9 @@ function Home() {
 
 
   return (
-    <div>
+    <main>
       This is an app to track your workout progress. Enjoy it
-    </div>
+    </main>
     
   )
 }

@@ -50,17 +50,21 @@ function Workout() {
   
     
 
-    return( <div className="Card">             
-                <h2>{workoutObject.title} {workoutObject.createdAt?.slice(0,10)}</h2>
-                <div>{ShowWorkoutExercises(workoutExercise, setWorkoutExercise,workoutObject)}</div>
-                {workoutObject.status == false &&
-                  <button id="Btn" className='addExerciseButton' onClick={handleExcercisesButton}>{buttonText}</button>
-                }
-                {workoutObject.status == false && 
-                  <button id ="Btn" className='addExerciseButton' onClick={completeWorkout}>Complete workout</button>
-                }
-                <div>{AddExerciseForm(exerciseObject, showAddExcercise, id, setWorkoutExercise, workoutExercise)}</div>
-            </div>);
+    return(
+       <main>
+        <div className="Card">             
+          <h2 className='WorkoutTitle'>{workoutObject.title} {workoutObject.createdAt?.slice(0,10)}</h2>
+          <div>{ShowWorkoutExercises(workoutExercise, setWorkoutExercise,workoutObject)}</div>
+            {workoutObject.status == false &&
+              <button id="Btn" className='addExerciseButton' onClick={handleExcercisesButton}>{buttonText}</button>
+            }
+            {workoutObject.status == false && 
+              <button id ="Btn" className='addExerciseButton' onClick={completeWorkout}>Complete workout</button>
+            }
+          <div>{AddExerciseForm(exerciseObject, showAddExcercise, id, setWorkoutExercise, workoutExercise)}</div>
+        </div>
+       </main>
+       );
   
   
 
@@ -85,7 +89,7 @@ function deleteRow(id, workoutId, setWorkoutExercise){
 const ShowWorkoutExercises = (workoutExercise,setWorkoutExercise,workoutObject) => {
   if(!workoutExercise.length)
   return(
-    <div> You have no exercises in this workout. </div>
+    <div className='CenteredText'> You have no exercises in this workout. </div>
   )
   else {
     //console.log(workoutExercise);
@@ -133,9 +137,6 @@ const AddExerciseForm = (exerciseObject, showAddExcercise, workoutiD, setWorkout
   };
   if (showAddExcercise === false ) {
     //setSelected(1);
-    return (
-      <div>{workoutiD}</div>
-    )
   } else {
   const validationSchema = Yup.object().shape({
       weight: Yup.
@@ -179,7 +180,7 @@ const AddExerciseForm = (exerciseObject, showAddExcercise, workoutiD, setWorkout
         {({ isSubmitting }) => (
             <Form>
               <div className='exerciseFormWrap'>
-                <div className='exerciseFromLabels'>
+                <div className='exerciseFormLabels'>
                 <select name="exercise" value={selectedValue} className='inputField' onChange={handleChange}>
                     {exerciseObject.map((exercise, key) => {
                     return(
@@ -188,19 +189,23 @@ const AddExerciseForm = (exerciseObject, showAddExcercise, workoutiD, setWorkout
                       })}
                   </select>
                 </div>
-                  
-                  <div className='exerciseFormLabels'>
-                  <Field name="weight" placeholder="Weight(kgs)..." className="inputField"/>
-                  </div>
-                  <div className='exerciseFormLabels'>
-                  <Field name="repetitions" placeholder="Repetitions..." className="inputField"/>
-                  </div>
-                  <button type='submit' className="addExerciseButton2">+</button>
-                  
+                <div className='exerciseFormLabels'>
+                <Field name="weight" placeholder="Weight(kgs)..." className="inputField"/>
+                </div>
+                <div className='exerciseFormLabels'>
+                <Field name="repetitions" placeholder="Repetitions..." className="inputField"/>
+                </div>
+                <div className='exerciseFormLabels'>
+                <button type='submit' className="addExerciseButton2">+</button>
+                </div>
+                     
               </div>
-              <ErrorMessage name = "weight" component = "span" className="errorMsg"></ErrorMessage>
-              <br></br>
-              <ErrorMessage name = "repetitions" component = "span" className="errorMsg"></ErrorMessage>
+              <div className='errorBox'>
+                <ErrorMessage name = "weight" component = "span" className="errorMsg"></ErrorMessage>
+                <br></br>
+                <ErrorMessage name = "repetitions" component = "span" className="errorMsg"></ErrorMessage>
+              </div>
+              
             </Form>
         )}
     </Formik>
