@@ -60,7 +60,7 @@ function Workouts(){
   return (
     
     <main>
-       <div className="Header">WORKOUTS</div>    
+       <div className="Header">Workouts</div>    
         <div className='workoutDiv'>
           <div className='addExerciseButton' onClick={onSubmit}>Add new workout</div>
         </div>

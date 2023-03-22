@@ -1,13 +1,11 @@
 import React, {useContext, useEffect, useState} from "react";
 import { useNavigate } from "react-router-dom";
-import { AuthContext } from "../helpers/AuthContext"
 import axios from "axios";
 function Profile() {
 
     let [profile, setProfile] = useState([]);
     let [completedWorkouts, setCompletedWorkouts] = useState(0);
-    const {setAuthState} = useContext(AuthContext);
-    const navigate = useNavigate();
+    let [totalExercises, setTotalExercises] = useState(0);
 
     useEffect(()=>{
         axios.get("http://localhost:3001/users/profile",{ 
@@ -21,19 +19,13 @@ function Profile() {
             else {
                 setProfile(response.data.user);
                 setCompletedWorkouts(response.data.completedWorkouts);
+                setTotalExercises(response.data.totalExercises);
             }
         });
     },[]);
-
-    const logout = () => {
-        localStorage.removeItem("accessToken");
-        setAuthState(false);
-        alert("You have logged out successfully");
-        navigate("/login");
-    }
     return (
         <main>
-            <div className="Header">PROFILE</div>
+            <div className="Header">Profile</div>
             <div className="ProfileCard">
                 <div className="CardTitle">Personal Info</div>
                 <div>
@@ -44,30 +36,25 @@ function Profile() {
                             Username: {value.username} <br></br>
                             </div>
                             <div className="Statistics">
-                            Weight:
+                            Weight: Not Specified
                             </div>
                             <div className="Statistics">
-                            Height:
+                            Height: Not Specified
                             </div>
                             <div className="Statistics">
-                            Age:
+                            Age: Not Specified
                             </div>
                             <div className="Statistics">
-                            Total workouts: {completedWorkouts}
+                            Total workouts done: {completedWorkouts}
                             </div>
                             <div className="Statistics">
-                            Total Exercises:
+                            Total Exercises: {totalExercises}
                             </div>
                         </div>            
                     )
                 })}
-                <button onClick={logout}>
-                Logout
-            </button>
             </div>
-            </div>  
-            
-            
+            </div>       
         </main>
            
     )
