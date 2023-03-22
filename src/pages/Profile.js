@@ -33,19 +33,41 @@ function Profile() {
     }
     return (
         <main>
-            <div>
+            <div className="Header">PROFILE</div>
+            <div className="ProfileCard">
+                <div className="CardTitle">Personal Info</div>
+                <div>
                 {profile.map((value,key) =>{
                     return(
                         <div>
-                            {value.username} <br></br> Completed workouts: {completedWorkouts}
-                        </div>
-                        
+                            <div className="Statistics">
+                            Username: {value.username} <br></br>
+                            </div>
+                            <div className="Statistics">
+                            Weight:
+                            </div>
+                            <div className="Statistics">
+                            Height:
+                            </div>
+                            <div className="Statistics">
+                            Age:
+                            </div>
+                            <div className="Statistics">
+                            Total workouts: {completedWorkouts}
+                            </div>
+                            <div className="Statistics">
+                            Total Exercises:
+                            </div>
+                        </div>            
                     )
                 })}
-            </div>
-            <button onClick={logout}>
+                <button onClick={logout}>
                 Logout
             </button>
+            </div>
+            </div>  
+            
+            
         </main>
            
     )

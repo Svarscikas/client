@@ -13,6 +13,7 @@ function Exercises() {
       },[])
   return (
     <main>
+       <div className="Header">EXERCISES</div>    
       <button className='addExerciseButton' onClick={() => navigate('/addexercise')}>Add new exercise
       </button>
       {exerciseList.map((value, key) =>{

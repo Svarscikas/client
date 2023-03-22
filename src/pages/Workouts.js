@@ -58,14 +58,16 @@ function Workouts(){
       });
     }
   return (
+    
     <main>
+       <div className="Header">WORKOUTS</div>    
         <div className='workoutDiv'>
           <div className='addExerciseButton' onClick={onSubmit}>Add new workout</div>
         </div>
         {workoutList.map((value, key) =>{
         return(
           <div className="Card">
-            <div className="Exercise"onClick={() => navigate(`/workouts/byId/${value.id}`)}>{value.createdAt.slice(0.,10)}{' '}{value.username}
+            <div className="Exercise"onClick={() => navigate(`/workouts/byId/${value.id}`)}>{value.createdAt.slice(0.,10)}{' '}
             {value.status == 0 && <p className='inProgress'>In progress</p>}{value.status == 1 && <p className='completed'>Completed</p>}
             </div>
 

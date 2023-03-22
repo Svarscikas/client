@@ -1,6 +1,6 @@
 :root {
   font-size: 16px;
-  font-family: 'Open Sans';
+  font-family: 'Sans-serif';
   --text-primary: #b6b6b6;
   --text-secondary: #ececec;
   --bg-primary: #23232e;
@@ -28,7 +28,6 @@ body::-webkit-scrollbar-thumb {
 
 main {
   margin-left: 5rem;
-  padding: 1rem;
 }
 
 .navbar{
@@ -268,10 +267,32 @@ main {
   background-color: #11e08a;
   cursor: pointer;
 }
+.CardTitle{
+  font-size: 2rem;
+  padding-bottom: 1rem;
+}
+.Statistics{
+  font-size: 1rem;
+  margin-bottom: 0.3rem;
+  border-radius: 0.5rem;
+  background-color: var(--bg-primary);
+  color: var(--text-secondary);
+  padding: 0.5rem;
+}
+.ProfileCard{
+  display: block;
+  box-sizing: border-box;
+  padding: 1rem;
+  box-shadow: 5px 5px 5px 5px rgb(201 201 201);
+}
+.CardContent{
+  display: block;
+}
 .Card{
   display: block;
   padding: 1rem;
   margin: auto;
+  margin-top: 1rem;
   margin-bottom: 1rem;
   background-color: white;
   box-shadow: 5px 5px 5px 5px rgb(201 201 201);
@@ -313,19 +334,30 @@ main {
 }
 .Exercise {
   display: flex;
-  border: #1e1e24 solid 1px;
+  color: var(--text-secondary);
+  background-color: var(--bg-primary);
   flex-direction: row;
   font-size: 1.5rem;
   border-radius: 0.5rem;
   align-items: center;
   justify-content: center;
-  background-color:white;
 }
 .exerciseTable{
   box-sizing: border-box;
   width: 100%;
   text-align: center;
   padding: 5px;
+}
+.Header{
+  display: flex;
+  align-items: center;
+  margin: auto;
+  background-color: var(--bg-primary);
+  width: 100%;
+  font-size: 2rem;
+  color: var(--text-secondary);
+  height: 5rem;
+  justify-content: center;
 }
 .exerciseTable th {
   width: 33%;
@@ -372,7 +404,7 @@ main {
   padding: 5px;
 }
 .Exercise:hover {
-  background-color: rgb(212, 207, 207);
+  background-color: var(--bg-secondary);
   cursor: pointer;
 }
 .CenteredText{
@@ -402,7 +434,7 @@ main {
   .Card{
     padding: 0.1rem;
     box-sizing: border-box;
-    width: 100%;
+    width: 90%;
   }
   .FormPanel{
     width: 70%;
