@@ -192,7 +192,7 @@ main {
   display: block;
   margin: auto;
   margin-top: 10px;
-  background-color:purple;
+  background-color:var(--bg-primary);
   padding: 10px;
   font-size: medium;
   border-radius: 10px;
@@ -202,7 +202,7 @@ main {
   text-decoration-line: none;
 }
 .addExerciseButton:hover{
-  background-color: rgb(75, 3, 75);
+  background-color: var(--bg-secondary);
   cursor: pointer;
 }
 #btn{
@@ -210,7 +210,7 @@ main {
   margin: auto;
   margin-bottom: 10px;
   margin-top: 10px;
-  background-color:purple;
+  background-color:var(--bg-primary);
   padding: 10px;
   width: 100%;
   font-size: medium;
@@ -220,7 +220,7 @@ main {
   text-decoration-line: none;
 }
 #btn:hover{
-  background-color: rgb(75, 3, 75);
+  background-color: var(--bg-secondary);
   cursor: pointer;
 }
 .buttonStyle{
@@ -329,13 +329,20 @@ main {
 }
 .exerciseTable th {
   width: 33%;
-  background-color:purple;
+  padding: 0.5rem;
+  background-color:var(--bg-primary);
   color: white;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
 }
 .exerciseTable tr:nth-child(even){
   background-color: #e0dcdc;
+}
+.errorMsg1{
+  font-size: 1rem;
+  color: red;
+  margin-top: 0.4rem;
+  margin-bottom: 0.4rem;
 }
 .Exercise1 {
   margin: auto;
@@ -397,6 +404,9 @@ main {
     box-sizing: border-box;
     width: 100%;
   }
+  .FormPanel{
+    width: 70%;
+  }
   .exerciseFormWrap{
     box-sizing: border-box;
     width: 95%;
@@ -447,7 +457,7 @@ main {
     width: 5rem;
     height: 100vh;
   }
-
+  
   .navbar:hover {
     width: 26rem;
   }

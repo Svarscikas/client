@@ -40,7 +40,7 @@ function AddExercise() {
         <Formik initialValues={initialValues} onSubmit = {onSubmit} validationSchema = {validationSchema}>
             <Form>
                 <label class="formLabel">Title:</label>
-                <ErrorMessage name = "title" component = "span" className="errorMsg"></ErrorMessage>
+                <ErrorMessage name = "title" component = "span" className="errorMsg1"></ErrorMessage>
                 <Field 
                     id="inputAddExercise"
                     class="inputField"
@@ -48,7 +48,7 @@ function AddExercise() {
                     placeholder="Ex. Bench press..."
                 />
                 <label class="formLabel">Description:</label>
-                <ErrorMessage name = "description" component = "span" className="errorMsg"></ErrorMessage>
+                <ErrorMessage name = "description" component = "span" className="errorMsg1"></ErrorMessage>
                 <Field 
                     id="inputExerciseDescription"
                     class="inputField"
