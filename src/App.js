@@ -45,7 +45,7 @@ function App() {
           <nav className="navbar">
             <ul className="navbar-nav">
               <li className="logo">
-                <a href="/" className="nav-link">
+                <Link to="/" className="nav-link">
                 <svg 
                   xmlns="http://www.w3.org/2000/svg" 
                   viewBox="0 0 448 512">
@@ -55,10 +55,10 @@ function App() {
                     />
                 </svg>
                   <span className="link-text logo-text">Workout Tracker</span>
-                </a>
+                </Link>
               </li>
               <li className="nav-item">
-                <a href="/profile" className="nav-link">
+                <Link to="/profile" className="nav-link">
                   <svg 
                     xmlns="http://www.w3.org/2000/svg" 
                     viewBox="0 0 448 512">
@@ -68,10 +68,10 @@ function App() {
                     />
                   </svg>
                   <span className="link-text">Profile</span>
-                </a>
+                </Link>
               </li>
               <li className="nav-item">
-                <a href="/leaderboard" className="nav-link">
+                <Link to="/leaderboard" className="nav-link">
                 <svg 
                   xmlns="http://www.w3.org/2000/svg" 
                   viewBox="0 0 576 512">
@@ -81,10 +81,10 @@ function App() {
                   />
                 </svg>
                   <span className="link-text">Leaderboard</span>
-                </a>
+                </Link>
               </li>
               <li className="nav-item">
-                <a href="/workouts" className="nav-link">
+                <Link to="/workouts" className="nav-link">
                 <svg 
                   xmlns="http://www.w3.org/2000/svg" 
                   viewBox="0 0 320 512">
@@ -94,11 +94,11 @@ function App() {
                   />
                 </svg>
                   <span className="link-text">Workouts</span>
-                </a>
+                </Link>
               </li>
               
               <li className="nav-item">
-                <a href="/exercises" className="nav-link">
+                <Link to="/exercises" className="nav-link">
                 <svg 
                   xmlns="http://www.w3.org/2000/svg" 
                   viewBox="0 0 640 512">
@@ -108,7 +108,7 @@ function App() {
                   />
                 </svg>
                   <span className="link-text">Exercises</span>
-                </a>
+                </Link>
               </li>
               <li className="nav-item">
                 <a onClick={logout} className="nav-link">
