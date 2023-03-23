@@ -19,7 +19,7 @@ function App() {
   const [authState, setAuthState] = useState(false);
   //Check if the user is logged in.
   useEffect(() => {
-    axios.get('http://localhost:3001/users/auth', {
+    axios.get('http://localhost:3003/users/auth', {
       headers :{
         accessToken: localStorage.getItem("accessToken"),
       },

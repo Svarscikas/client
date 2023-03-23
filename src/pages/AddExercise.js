@@ -25,7 +25,7 @@ function AddExercise() {
     });
     const onSubmit = (data) => {
 
-        axios.post("http://localhost:3001/exercises/", data).then( (response) =>{
+        axios.post("http://localhost:3003/exercises/", data).then( (response) =>{
             if(response.data != "Duplicate") {
                 alert("Exercise added.")            
                 navigate('/exercises');

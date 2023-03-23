@@ -14,7 +14,7 @@ function Login() {
   const login = () => {
     
     const data = {username:username,password:password};
-    axios.post("http://localhost:3001/users/login", data).then((response) => {
+    axios.post("http://localhost:3003/users/login", data).then((response) => {
       
       if(response.data.error){
         alert(response.data.error);
@@ -22,7 +22,7 @@ function Login() {
       else {
         localStorage.setItem("accessToken", response.data);
         setAuthState(true);
-        navigate("/");
+        navigate("/profile");
       }
     })
   }

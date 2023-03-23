@@ -31,19 +31,19 @@ function Workout() {
         alert("You must have atleast one exercise done to complete it.");
         return;
       }
-      axios.put('http://localhost:3001/workouts/byId/' + id).then ((response) => {
+      axios.put('http://localhost:3003/workouts/byId/' + id).then ((response) => {
          alert(response.data);
          navigate('/workouts');
       })
     }
 
     useEffect(() => {
-      axios.get('http://localhost:3001/workouts/byId/' + id).then( (response) =>{
+      axios.get('http://localhost:3003/workouts/byId/' + id).then( (response) =>{
         setWorkoutObject(response.data.workout);
         setWorkoutExercise(response.data.exercises);
         //console.log(response.data);
       });
-      axios.get('http://localhost:3001/exercises/', {
+      axios.get('http://localhost:3003/exercises/', {
         headers : {
           accessToken: localStorage.getItem("accessToken"),
         }
@@ -76,7 +76,7 @@ function Workout() {
 
 
 function deleteRow(id, workoutId, setWorkoutExercise){
-  axios.delete("http://localhost:3001/workouts/byId/"+ id + "/" + workoutId,
+  axios.delete("http://localhost:3003/workouts/byId/"+ id + "/" + workoutId,
   {
     headers: {
       accessToken: localStorage.getItem("accessToken"),
@@ -167,7 +167,7 @@ const AddExerciseForm = (exerciseObject, showAddExcercise, workoutiD, setWorkout
     onSubmit={(data) => {
 
       data.exercise = selectedValue;
-       axios.post("http://localhost:3001/workouts/byId/:id", data,{
+       axios.post("http://localhost:3003/workouts/byId/:id", data,{
         headers: {
           accessToken: localStorage.getItem("accessToken"),
         } 

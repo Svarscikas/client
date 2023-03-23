@@ -22,7 +22,7 @@ function Register() {
     password : Yup.string().required("You must enter a password").min(6),
   })
   const onSubmit = (data) => {
-    axios.post('http://localhost:3001/users/register', data).then((response)=>{
+    axios.post('http://localhost:3003/users/register', data).then((response)=>{
       console.log(response.data);
       if(response.data == "0"){
         

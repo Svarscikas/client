@@ -5,7 +5,7 @@ function Leaderboard() {
   const [bestLifts, setBestLifts] = useState([]);
 
   useEffect(() => {
-    axios.get('http://localhost:3001/exercises/personalbests').then( (response) =>{
+    axios.get('http://localhost:3003/exercises/personalbests').then( (response) =>{
       setBestLifts(response.data)     //console.log(response.data);
     });
    },[])

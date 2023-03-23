@@ -8,7 +8,7 @@ function Profile() {
     let [totalExercises, setTotalExercises] = useState(0);
 
     useEffect(()=>{
-        axios.get("http://localhost:3001/users/profile",{ 
+        axios.get("http://localhost:3003/users/profile",{ 
             headers : {
             accessToken : localStorage.getItem("accessToken"),
             }

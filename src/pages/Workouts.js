@@ -10,7 +10,7 @@ function Workouts(){
     let navigate = useNavigate();
     useEffect(()=> {
         
-        axios.get("http://localhost:3001/workouts/",{
+        axios.get("http://localhost:3003/workouts/",{
           headers: {
             accessToken: localStorage.getItem("accessToken"),
           }
@@ -28,7 +28,7 @@ function Workouts(){
       },[])
 
     const onSubmit = () =>{
-        axios.post("http://localhost:3001/workouts/",{
+        axios.post("http://localhost:3003/workouts/",{
             title : "Workout",
             description : "Dummy workout",
             status: false,
@@ -50,7 +50,7 @@ function Workouts(){
         });
     }
     function deleteWorkout(id) {
-      axios.delete('http://localhost:3001/workouts/' + id,{
+      axios.delete('http://localhost:3003/workouts/' + id,{
         headers :{accessToken: localStorage.getItem("accessToken"),},
       }).then((response) =>{
         alert("Workout deleted");
