@@ -43,7 +43,11 @@ function Workout() {
         setWorkoutExercise(response.data.exercises);
         //console.log(response.data);
       });
-      axios.get('http://localhost:3001/exercises/').then( (response) =>{
+      axios.get('http://localhost:3001/exercises/', {
+        headers : {
+          accessToken: localStorage.getItem("accessToken"),
+        }
+      }).then( (response) =>{
         setExerciseObject(response.data);
       });
      },[])

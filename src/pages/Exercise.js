@@ -17,9 +17,6 @@ function Exercise() {
     return( <div className="Card">             
               <div className='Exercise'>{exerciseObject.title}</div>
               <div className='Description'>{exerciseObject.description} </div>
-              <div className="Weight">Weight: {exerciseObject.weight}</div>
-              <div className="MaxWeight">Personal best: {exerciseObject.maxWeight}</div>
-              <button className='buttonStyle'>Add to your workout</button>
             </div>);
 }
 

@@ -7,7 +7,11 @@ function Exercises() {
     let [exerciseList, setExerciseList] = useState([]);
     let navigate = useNavigate();
     useEffect(()=> {
-        axios.get("http://localhost:3001/exercises/").then( (response) =>{
+        axios.get("http://localhost:3001/exercises/", {
+          headers: {
+            accessToken: localStorage.getItem("accessToken"),
+          }
+        }).then( (response) =>{
           setExerciseList(response.data);
         });
       },[])
