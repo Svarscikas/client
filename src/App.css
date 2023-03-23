@@ -324,6 +324,7 @@ main {
 }
 .text{
   font-size: 1rem;
+  text-align: center;
 }
 .ExerciseContent{
   text-align: center;

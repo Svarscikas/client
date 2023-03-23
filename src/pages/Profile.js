@@ -36,13 +36,13 @@ function Profile() {
                             Username: {value.username} <br></br>
                             </div>
                             <div className="Statistics">
-                            Weight: Not Specified
+                            Weight: {value.weight} kg
                             </div>
                             <div className="Statistics">
-                            Height: Not Specified
+                            Height: {value.height} cm
                             </div>
                             <div className="Statistics">
-                            Age: Not Specified
+                            Age: {value.age} years old
                             </div>
                             <div className="Statistics">
                             Total workouts done: {completedWorkouts}

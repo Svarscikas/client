@@ -48,7 +48,7 @@ function Workout() {
           accessToken: localStorage.getItem("accessToken"),
         }
       }).then( (response) =>{
-        setExerciseObject(response.data);
+        setExerciseObject(response.data.exerciseList);
       });
      },[])
   
