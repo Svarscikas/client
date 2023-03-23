@@ -348,6 +348,20 @@ main {
   text-align: center;
   padding: 5px;
 }
+.exerciseTable th {
+  width: 33%;
+  padding: 0.5rem;
+  background-color:var(--bg-primary);
+  color: white;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+.exerciseTable td{
+  padding: 0.5rem;
+}
+.exerciseTable tr:nth-child(even){
+  background-color: #e0dcdc;
+}
 .Header{
   display: flex;
   align-items: center;
@@ -359,17 +373,8 @@ main {
   height: 5rem;
   justify-content: center;
 }
-.exerciseTable th {
-  width: 33%;
-  padding: 0.5rem;
-  background-color:var(--bg-primary);
-  color: white;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
-}
-.exerciseTable tr:nth-child(even){
-  background-color: #e0dcdc;
-}
+
+
 .errorMsg1{
   font-size: 1rem;
   color: red;
