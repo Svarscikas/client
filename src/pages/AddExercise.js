@@ -32,13 +32,10 @@ function AddExercise() {
 
         axios.post("http://localhost:3003/exercises/", data).then( (response) =>{
             if(response.data != "Duplicate") {   
-
-                //navigate('/exercises');
-                openModal("Exercise added.");
-
+                openModal("Exercise has been added.");
             }
             else{
-                openModal("The exercise already exists.");
+                openModal("This exercise already exists.");
             }
         });
     }

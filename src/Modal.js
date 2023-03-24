@@ -10,13 +10,23 @@ const warning = {
     backgroundColor: 'crimson',
     borderRadius: '0.5rem',
     padding: '1rem',
-    zIndex: 1000,
+    zIndex: 1000
 }
-
+const overlay = {
+    position: 'fixed',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    backgroundColor: 'rgba(0, 0, 0, .7)',
+    zIndex: 1000
+}
 export default function Modal({open, children, onClose}) {
   if(!open) return null
   return (
-    <div className='wrapper'>
+    <>
+        <div style={overlay}></div>
+        <div className='wrapper'>
         <div className='content'>
             <svg className='flex-item'
                 xmlns="http://www.w3.org/2000/svg" 
@@ -37,5 +47,7 @@ export default function Modal({open, children, onClose}) {
             
         </div>
     </div>
+    </>
+    
   )
 }

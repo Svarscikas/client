@@ -1,6 +1,5 @@
 .wrapper {
     position: fixed;
-    width: 50%;
     top: 50%;
     left: 50%; 
     color: white;
@@ -15,11 +14,14 @@
     justify-content: space-between;
     align-items: center;
 }
+
 .flex-item:first-child{
     height: 2rem;
+    padding-right: 1rem;
 }
 .flex-item:nth-child(2){
     font-weight: bold;
+    padding-right: 1rem;
 }
 .flex-item:last-child{
     background-color: white;
@@ -29,4 +31,12 @@
     cursor: pointer;
     color: crimson;
     border-radius: 0.2rem;
+    margin-left: 1rem;
+}
+@media only screen and (min-width: 600px) {
+}
+@media only screen and (max-width: 600px) {
+    .wrapper {
+        width: 80%;
+    }
 }
