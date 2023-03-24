@@ -4,10 +4,11 @@ import { Formik, Form, Field, ErrorMessage, yupToFormErrors} from 'formik';
 import * as Yup from 'yup';
 import { useNavigate } from 'react-router-dom'
 import { useState } from 'react';
-
+import Modal from '../Modal';
 function AddExercise() {
-
-    //const alert = useAlert();
+    
+    const [isOpen, setIsOpen] = useState(false);
+    const [text, setText] = useState('');
     let navigate = useNavigate();
     const initialValues = {
         title: "",
@@ -15,6 +16,10 @@ function AddExercise() {
         //weight: 0,
         //maxWeight: 0
     };
+    const openModal = (text) => {
+        setText(text);
+        setIsOpen(true);
+    }
     const validationSchema = Yup.object().shape({
         title: Yup.
         string().
@@ -26,12 +31,14 @@ function AddExercise() {
     const onSubmit = (data) => {
 
         axios.post("http://localhost:3003/exercises/", data).then( (response) =>{
-            if(response.data != "Duplicate") {
-                alert("Exercise added.")            
-                navigate('/exercises');
+            if(response.data != "Duplicate") {   
+
+                //navigate('/exercises');
+                openModal("Exercise added.");
+
             }
             else{
-               alert("The exercise already exists.")
+                openModal("The exercise already exists.");
             }
         });
     }
@@ -60,7 +67,9 @@ function AddExercise() {
             </Form>
             
         </Formik>
-        
+        <Modal open={isOpen} onClose={()=> {setIsOpen(false);navigate('/exercises')}}>
+        {text}
+        </Modal>
     </div>
   );
 }
