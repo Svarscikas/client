@@ -8,6 +8,7 @@ function Profile() {
     const [completedWorkouts, setCompletedWorkouts] = useState(0);
     const [totalExercises, setTotalExercises] = useState(0);
     const [editInfo, setEditInfo] = useState(false);
+    const [error, setError] = useState(false);
 
     useEffect(()=>{
         axios.get("http://localhost:3003/users/profile",{ 
@@ -26,25 +27,36 @@ function Profile() {
             }
         });
     },[]);
-
+    
     const handleProfileInfoEdit = (event) => {
         event.preventDefault();
-        console.log(inputs);
-        axios.put("http://localhost:3003/users/updateProfile", inputs, {
-            headers: {
-                accessToken: localStorage.getItem("accessToken"),
-            }
-        }).then((response) => {
-            //setProfile(response.data.user)
-            if(response.data) {
-                setProfile(response.data)
-            }
-            setEditInfo(false);
-        })
+        if(!error){
+            axios.put("http://localhost:3003/users/updateProfile", inputs, {
+                headers: {
+                    accessToken: localStorage.getItem("accessToken"),
+                }
+            }).then((response) => {
+                if(response.data.errors){
+                    console.log(response.data.errors)
+                }
+                else{
+                    setProfile(response.data)
+                    setEditInfo(false);
+                }
+                
+            })
+        }
+       
     }
     const handleChange = (event) => {
         const name = event.target.name;
         const value = event.target.value;
+        if(value < 0) {
+            setError(true);
+        }
+        if(value >= 0) {
+            setError(false);
+        }
         setInputs(values => ({...values, [name]: value}))
     }
     return (
@@ -71,7 +83,8 @@ function Profile() {
                                     <div Statistics-item> 
                                         Weight:
                                         <div className="Statistics-editable"> {!editInfo && value.weight} 
-                                            {editInfo && <input 
+                                            {editInfo && <input
+                                            min = "0" 
                                             type="number" 
                                             name="weight"
                                             value={inputs.weight || ""} 
@@ -81,7 +94,8 @@ function Profile() {
                                         </div>
                                         Height:
                                         <div className="Statistics-editable"> {!editInfo && value.height}
-                                            {editInfo && <input 
+                                            {editInfo && <input
+                                            min = "0"
                                             type="number"
                                             name="height" 
                                             value={inputs.height || ""} 
@@ -93,11 +107,13 @@ function Profile() {
                                         <div className="Statistics-editable">{!editInfo && value.age}
                                             {editInfo && <input 
                                             placeholder="Enter your age"
+                                            min = "0"
                                             name="age" 
                                             type="number" 
                                             onChange={handleChange}
                                             value={inputs.age || ""} ></input>} years
                                         </div>
+                                        {error &&<span className="errorMsg">Please provide a positive values</span>}
                                     </div>
                                     <div className="Statistics-item">
                                         {editInfo && <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" onClick={handleProfileInfoEdit}><path fill="green" d="M256 512c141.4 0 256-114.6 256-256S397.4 0 256 0S0 114.6 0 256S114.6 512 256 512zM369 209L241 337c-9.4 9.4-24.6 9.4-33.9 0l-64-64c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l47 47L335 175c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9z"/></svg>}
