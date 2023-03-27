@@ -221,6 +221,11 @@ main {
   height: 2rem;
   margin: 0.5rem;
   cursor: pointer;
+  transition: 200ms;
+}
+.Statistics-item svg:hover {
+  filter:grayscale(40%)
+  
 }
 .ProfileCard{
   display: block;

@@ -38,6 +38,7 @@ function Profile() {
             }).then((response) => {
                 if(response.data.errors){
                     console.log(response.data.errors)
+                    setEditInfo(false);
                 }
                 else{
                     setProfile(response.data)
@@ -45,8 +46,7 @@ function Profile() {
                 }
                 
             })
-        }
-       
+        }       
     }
     const handleChange = (event) => {
         const name = event.target.name;
