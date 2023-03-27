@@ -209,14 +209,19 @@ main {
   align-items: center;
   margin-bottom: 0.3rem;
   border-radius: 0.5rem;
+  justify-content: space-between;
   background-color: var(--bg-primary);
   color: var(--text-secondary);
   padding: 0.5rem;
 }
-.Statistics-item:last-child{
+.Statistics-editable{
+  padding-bottom: 0.5rem;
+  font-size: 1.2rem;
+}
+.Statistics-item svg{
   height: 2rem;
+  margin: 0.5rem;
   cursor: pointer;
-  margin-left: auto;
 }
 .ProfileCard{
   display: block;
