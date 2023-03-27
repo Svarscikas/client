@@ -22,18 +22,20 @@ function Exercises() {
       <div className="Header">Exercises</div>
       {admin && <button className='addExerciseButton' onClick={() => navigate('/addexercise')}>Add new exercise
       </button>}
+      <div className='Exercise-Wrapper'>
       {exerciseList.map((value, key) =>{
         return(
-          <div>
-            <div className='Card' onClick={() => navigate(`/exercises/byId/${value.id}`)}>
-              <div className='WorkoutTitle'>{value.title}</div>
+          
+            <div className='ExerciseCard' onClick={() => navigate(`/exercises/byId/${value.id}`)}>
+              <div className='ExerciseTitle'>{value.title}</div>
               <div className='text'>{value.personalBest > 0 && <p class="text">Personal best: {value.personalBest} Kg</p>}</div>
               
             </div>
             
-          </div>
+          
         );
       })}
+      </div>
     </main>
     
   )

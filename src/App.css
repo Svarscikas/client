@@ -121,14 +121,13 @@ main {
   min-width: 200px;
   display: block;
   margin: auto;
-  margin-top: 10px;
+  margin-top: 1rem;
   background-color:var(--bg-primary);
   padding: 10px;
   font-size: medium;
   border-radius: 10px;
   border: none;
   color:white;
-  margin-bottom: 10px;
   text-decoration-line: none;
 }
 .addExerciseButton:hover{
@@ -203,12 +202,21 @@ main {
   padding-bottom: 1rem;
 }
 .Statistics{
+  display: flex;
+  flex-direction: row;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   font-size: 1rem;
+  align-items: center;
   margin-bottom: 0.3rem;
   border-radius: 0.5rem;
   background-color: var(--bg-primary);
   color: var(--text-secondary);
   padding: 0.5rem;
+}
+.Statistics-item:last-child{
+  height: 2rem;
+  cursor: pointer;
+  margin-left: auto;
 }
 .ProfileCard{
   display: block;
@@ -230,6 +238,34 @@ main {
   border-radius: 10px;
   width: 70%;
   padding-bottom: 20px;
+}
+.Exercise-Wrapper {
+  padding: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap:1rem;
+  
+}
+
+.ExerciseCard{
+  cursor: pointer;
+  flex-basis: calc(33.33% - 1rem);
+  flex-grow: 0;
+  box-shadow: 5px 5px 5px 5px rgb(201 201 201);
+  border-radius: 0.5rem;
+}
+.ExerciseTitle{
+  text-align: center;
+  font-size: 1.5rem;
+  padding: 0.5rem;
+  border-top-right-radius: 0.5rem;
+  border-top-left-radius: 0.5rem;
+  background-color: var(--bg-primary);
+  color: var(--text-secondary);
+  transition: var(--transition-speed);
+}
+.ExerciseTitle:hover{
+  background-color: var(--bg-secondary);
 }
 .images{
   border-bottom: 1px solid black;
@@ -442,6 +478,13 @@ main {
     padding: 0.1rem;
     box-sizing: border-box;
     width: 90%;
+  }
+  .Exercise-Wrapper{
+    display: block;
+  }
+  .ExerciseCard{
+    margin-bottom: 1rem;
+    padding-bottom: 0.2rem;
   }
   .FormPanel{
     width: 70%;
