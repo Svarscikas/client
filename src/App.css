@@ -116,6 +116,11 @@ main {
   background-color: var(--bg-secondary);
   cursor: pointer;
 }
+.copyright{
+  text-align: center;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
 .searchBar{
   background-image: url(./images/magnifying-glass-solid.svg);
   background-repeat: no-repeat;
@@ -519,6 +524,9 @@ main {
     margin-bottom: 1rem;
     padding-bottom: 1rem;
   }
+  .copyright{
+    margin-bottom: 6rem;
+  }
   .Exercise-Wrapper{
     display: block;
   }
@@ -547,6 +555,7 @@ main {
     bottom: 0;
     width: 100vw;
     height: 5rem;
+    z-index: 2;
   }
 
   .logo {

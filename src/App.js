@@ -144,15 +144,17 @@ function App() {
         </Routes>
       </Router>
     </AuthContext.Provider>
-    {/* <footer className="footer">
+    { <footer className="footer">
       <div className="images">
       <img src="/logo192.png" className="footerImage"></img>
       <img src="/nodejs.png" className="footerImage"></img>
       </div>
-
+      <div className="copyright">
       Copyright@ 2023 Arnas Erslovas
+      </div>      
       
-      </footer> */}
+      
+      </footer> }
   </div>
   
   )

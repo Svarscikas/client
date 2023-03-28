@@ -59,12 +59,16 @@ function Workout() {
         <div className="Card">             
           <h2 className='WorkoutTitle'>{workoutObject.title} {workoutObject.createdAt?.slice(0,10)}</h2>
           <div>{ShowWorkoutExercises(workoutExercise, setWorkoutExercise,workoutObject)}</div>
-            {workoutObject.status == false &&
+          <div className='ButtonRow'>
+          {workoutObject.status == false &&
               <button id="Btn" className='addExerciseButton' onClick={handleExcercisesButton}>{buttonText}</button>
             }
             {workoutObject.status == false && 
               <button id ="Btn" className='addExerciseButton' onClick={completeWorkout}>Complete workout</button>
             }
+
+          </div>
+            
           <div>{AddExerciseForm(exerciseObject, showAddExcercise, id, setWorkoutExercise, workoutExercise)}</div>
         </div>
        </main>
