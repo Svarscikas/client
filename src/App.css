@@ -120,6 +120,7 @@ main {
   text-align: center;
   margin-top: 1rem;
   margin-bottom: 1rem;
+  font-weight: bold;
 }
 .searchBar{
   background-image: url(./images/magnifying-glass-solid.svg);
@@ -517,6 +518,24 @@ main {
 }
 /* Small screens */
 @media only screen and (max-width: 600px) {
+  .workoutDiv{
+    margin-top: 1rem;
+  }
+  .ButtonRow{
+    padding-top: 1rem;
+    flex-direction: column;
+  }
+  .addExerciseButton{
+    box-sizing: border-box;
+    width: 95%;
+    margin: auto;
+  }
+  
+  .searchBar{
+    width: 95%;
+    box-sizing: border-box;
+    margin: auto;
+  }
   .Card{
     padding: 0.1rem;
     box-sizing: border-box;
