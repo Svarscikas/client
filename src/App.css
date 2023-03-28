@@ -265,6 +265,7 @@ main {
 }
 .ExerciseTitle{
   text-align: center;
+  display: flex;
   font-size: 1.5rem;
   padding: 0.5rem;
   border-top-right-radius: 0.5rem;
@@ -275,6 +276,14 @@ main {
 }
 .ExerciseTitle:hover{
   background-color: var(--bg-secondary);
+}
+.ExerciseTitle svg {
+  transition: var(--transition-speed);
+  margin-left: auto;
+  height: 1.5rem;
+}
+.ExerciseTitle svg path:hover {
+  fill: var(--text-primary);
 }
 .images{
   border-bottom: 1px solid black;
@@ -298,7 +307,8 @@ main {
 }
 .exerciseFormWrap {
   box-sizing: border-box;
-  margin-bottom: 10px;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
   display: flex;
   justify-content:center;
   gap:10px;
@@ -323,6 +333,11 @@ main {
   width: 100%;
   text-align: center;
   padding: 5px;
+}
+.ButtonRow{
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .exerciseTable th {
   width: 33%;
@@ -487,6 +502,8 @@ main {
     padding: 0.1rem;
     box-sizing: border-box;
     width: 90%;
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
   }
   .Exercise-Wrapper{
     display: block;

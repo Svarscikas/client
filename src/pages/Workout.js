@@ -194,10 +194,10 @@ const AddExerciseForm = (exerciseObject, showAddExcercise, workoutiD, setWorkout
                   </select>
                 </div>
                 <div className='exerciseFormLabels'>
-                <Field name="weight" placeholder="Weight(kgs)..." className="inputField"/>
+                <Field name="weight" type="number" placeholder="Weight(kgs)..." className="inputField"/>
                 </div>
                 <div className='exerciseFormLabels'>
-                <Field name="repetitions" placeholder="Repetitions..." className="inputField"/>
+                <Field type ="number" name="repetitions" placeholder="Repetitions..." className="inputField"/>
                 </div>
                 <div className='exerciseFormLabels'>
                 <button type='submit' className="addExerciseButton2">+</button>
