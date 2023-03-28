@@ -24,6 +24,7 @@ function Exercises() {
         {admin && <button className='addExerciseButton' onClick={() => navigate('/addexercise')}>Add new exercise
         </button>}
         {!admin && <button className='addExerciseButton'>Suggest new exercise</button>}
+        <input className='searchBar' type="text" placeholder='Search for an exercise...'></input>
       </div>
       
       <div className='Exercise-Wrapper'>
