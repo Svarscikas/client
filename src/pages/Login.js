@@ -14,7 +14,7 @@ function Login() {
   const login = () => {
     
     const data = {username:username,password:password};
-    axios.post("http://localhost:3003/users/login", data).then((response) => {
+    axios.post("https://workout-tracker-server-app.onrender.com/users/login", data).then((response) => {
       
       if(response.data.error){
         alert(response.data.error);

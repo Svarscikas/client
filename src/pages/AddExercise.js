@@ -30,7 +30,7 @@ function AddExercise() {
     });
     const onSubmit = (data) => {
 
-        axios.post("http://localhost:3003/exercises/", data).then( (response) =>{
+        axios.post("https://workout-tracker-server-app.onrender.com/exercises/", data).then( (response) =>{
             if(response.data != "Duplicate") {   
                 openModal("Exercise has been added.");
             }

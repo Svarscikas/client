@@ -19,7 +19,7 @@ function Exercises() {
   
 
     useEffect(()=> {
-        axios.get("http://localhost:3003/exercises/", {
+        axios.get("https://workout-tracker-server-app.onrender.com/exercises/", {
           headers: {
             accessToken: localStorage.getItem("accessToken"),
           }

@@ -9,7 +9,7 @@ function Exercise() {
     let { id } = useParams();
     const [exerciseObject, setExerciseObject] = useState({});
     useEffect(() => {
-      axios.get('http://localhost:3003/exercises/byId/' + id).then( (response) =>{
+      axios.get('https://workout-tracker-server-app.onrender.com/exercises/byId/' + id).then( (response) =>{
         console.log(response);
         setExerciseObject(response.data);
       });

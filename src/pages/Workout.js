@@ -80,7 +80,7 @@ function Workout() {
 
 
 function deleteRow(id, workoutId, setWorkoutExercise){
-  axios.delete("http://localhost:3003/workouts/byId/"+ id + "/" + workoutId,
+  axios.delete("https://workout-tracker-server-app.onrender.com/workouts/byId/"+ id + "/" + workoutId,
   {
     headers: {
       accessToken: localStorage.getItem("accessToken"),
@@ -171,7 +171,7 @@ const AddExerciseForm = (exerciseObject, showAddExcercise, workoutiD, setWorkout
     onSubmit={(data) => {
 
       data.exercise = selectedValue;
-       axios.post("http://localhost:3003/workouts/byId/:id", data,{
+       axios.post("https://workout-tracker-server-app.onrender.com/workouts/byId/:id", data,{
         headers: {
           accessToken: localStorage.getItem("accessToken"),
         } 

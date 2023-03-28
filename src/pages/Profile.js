@@ -31,7 +31,7 @@ function Profile() {
     const handleProfileInfoEdit = (event) => {
         event.preventDefault();
         if(!error){
-            axios.put("http://localhost:3003/users/updateProfile", inputs, {
+            axios.put("https://workout-tracker-server-app.onrender.com/users/updateProfile", inputs, {
                 headers: {
                     accessToken: localStorage.getItem("accessToken"),
                 }

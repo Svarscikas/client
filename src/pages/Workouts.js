@@ -10,7 +10,7 @@ function Workouts(){
     let navigate = useNavigate();
     useEffect(()=> {
         
-        axios.get("http://localhost:3003/workouts/",{
+        axios.get("https://workout-tracker-server-app.onrender.com/workouts/",{
           headers: {
             accessToken: localStorage.getItem("accessToken"),
           }
@@ -28,7 +28,7 @@ function Workouts(){
       },[])
 
     const onSubmit = () =>{
-        axios.post("http://localhost:3003/workouts/",{
+        axios.post("https://workout-tracker-server-app.onrender.com/workouts/",{
             title : "Workout",
             description : "Dummy workout",
             status: false,
@@ -50,7 +50,7 @@ function Workouts(){
         });
     }
     function deleteWorkout(id) {
-      axios.delete('http://localhost:3003/workouts/' + id,{
+      axios.delete('https://workout-tracker-server-app.onrender.com/workouts/' + id,{
         headers :{accessToken: localStorage.getItem("accessToken"),},
       }).then((response) =>{
         alert("Workout deleted");
