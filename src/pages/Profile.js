@@ -11,7 +11,7 @@ function Profile() {
     const [error, setError] = useState(false);
 
     useEffect(()=>{
-        axios.get("http://localhost:3003/users/profile",{ 
+        axios.get("https://workout-tracker-server-app.onrender.com/users/profile",{ 
             headers : {
             accessToken : localStorage.getItem("accessToken"),
             }

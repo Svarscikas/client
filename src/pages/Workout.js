@@ -31,19 +31,19 @@ function Workout() {
         alert("You must have atleast one exercise done to complete it.");
         return;
       }
-      axios.put('http://localhost:3003/workouts/byId/' + id).then ((response) => {
+      axios.put('https://workout-tracker-server-app.onrender.com/workouts/byId/' + id).then ((response) => {
          alert(response.data);
          navigate('/workouts');
       })
     }
 
     useEffect(() => {
-      axios.get('http://localhost:3003/workouts/byId/' + id).then( (response) =>{
+      axios.get('https://workout-tracker-server-app.onrender.com/workouts/byId/' + id).then( (response) =>{
         setWorkoutObject(response.data.workout);
         setWorkoutExercise(response.data.exercises);
         //console.log(response.data);
       });
-      axios.get('http://localhost:3003/exercises/', {
+      axios.get('https://workout-tracker-server-app.onrender.com/exercises/', {
         headers : {
           accessToken: localStorage.getItem("accessToken"),
         }
