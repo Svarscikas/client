@@ -72,7 +72,10 @@ function Workouts(){
             </div>
 
             <div className='ExerciseContent'>Exercise count: {value.exerciseCount}</div>
+            <div className='ButtonRow'>
             <button className='addExerciseButton' onClick={() => deleteWorkout(value.id)}>Delete</button>
+            </div>
+            
           </div>
         );
       })}</main>
